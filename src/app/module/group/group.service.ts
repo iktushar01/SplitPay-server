@@ -133,7 +133,13 @@ const getDashboard = async (groupId: string, requesterId: string) => {
   );
 
   const balancesWithUsers = ledger.balances.map((b) => ({
-    ...b,
+    userId: b.userId,
+    paidTotal: b.paidTotal,
+    shareTotal: b.shareTotal,
+    expenseNet: b.expenseNet,
+    settlementAdjustment: b.settlementAdjustment,
+    effectiveNet: b.effectiveNet,
+    netBalance: b.effectiveNet,
     user: membersById.get(b.userId) ?? null,
   }));
 
