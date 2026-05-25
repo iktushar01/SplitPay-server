@@ -14,3 +14,7 @@ export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus];
 export const SettlementStatus = prismaModule.SettlementStatus;
 export type SettlementStatus =
   (typeof SettlementStatus)[keyof typeof SettlementStatus];
+
+export const GroupInviteStatus = prismaModule.GroupInviteStatus;
+export type GroupInviteStatus =
+  (typeof GroupInviteStatus)[keyof typeof GroupInviteStatus];

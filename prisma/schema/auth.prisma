@@ -24,6 +24,8 @@ model User {
   expenseSplits     ExpenseSplit[]
   settlementsFrom   Settlement[]   @relation("SettlementFrom")
   settlementsTo     Settlement[]   @relation("SettlementTo")
+  invitesSent       GroupInvite[]  @relation("InvitesSent")
+  invitesReceived   GroupInvite[]  @relation("InvitesReceived")
 
   @@map("user")
 }

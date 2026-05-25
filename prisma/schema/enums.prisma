@@ -13,3 +13,10 @@ enum SettlementStatus {
   PENDING
   COMPLETED
 }
+
+enum GroupInviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}

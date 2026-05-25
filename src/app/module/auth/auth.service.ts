@@ -8,6 +8,7 @@ import { tokenUtils } from "../../utils/token";
 import { jwtUtils } from "../../utils/jwt";
 import { envVars } from "../../../config/env";
 import { uploadFileToCloudinary, deleteFileFromCloudinary } from "../../../config/cloudinary.config";
+import { InviteService } from "../invite/invite.service";
 import {
     IChangePassWordPayload,
     ILoginUser,
@@ -94,6 +95,11 @@ const registerStudent = async (payload: IRegisterStudent, fileBuffer?: Buffer, f
             });
             authData.user.image = imageUrl;
         }
+
+        await InviteService.linkInvitesForUser(
+            authData.user.id,
+            authData.user.email,
+        );
 
         const { accessToken, refreshToken } = buildTokenPair({
             id: authData.user.id,

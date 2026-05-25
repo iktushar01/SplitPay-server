@@ -5,10 +5,12 @@ import { validateRequest } from "../../middleware/validateRequest";
 import { ExpenseRoute } from "../expense/expense.route";
 import { SettlementRoute } from "../settlement/settlement.route";
 import { GroupController } from "./group.controller";
+import { InviteController } from "../invite/invite.controller";
 import {
   addGroupMemberZodSchema,
   createGroupZodSchema,
   groupIdParamsSchema,
+  inviteByEmailZodSchema,
 } from "./group.validation";
 
 const router = Router();
@@ -35,6 +37,14 @@ router.get(
   checkAuth(...userRoles),
   validateRequest(groupIdParamsSchema, "params"),
   GroupController.getDashboard,
+);
+
+router.post(
+  "/:groupId/invites",
+  checkAuth(...userRoles),
+  validateRequest(groupIdParamsSchema, "params"),
+  validateRequest(inviteByEmailZodSchema),
+  InviteController.inviteToGroup,
 );
 
 router.post(

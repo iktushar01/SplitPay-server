@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitPay Group Invite</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f0f9ff;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#f0f9ff;padding:40px 20px;">
+  <tr>
+    <td align="center">
+      <table width="100%" style="max-width:520px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+        <tr>
+          <td align="center" style="padding:36px 32px 16px;">
+            <h2 style="margin:0;color:#0e7490;font-size:22px;font-weight:800;">SplitPay</h2>
+            <p style="margin:8px 0 0;color:#64748b;font-size:14px;">Group expense invitation</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:0 32px 24px;">
+            <p style="margin:0 0 12px;color:#334155;font-size:16px;line-height:1.5;">
+              Hi <strong><%= name %></strong>,
+            </p>
+            <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">
+              <strong><%= inviterName %></strong> invited you to join the group
+              <strong>"<%= groupName %>"</strong> on SplitPay.
+            </p>
+            <% if (isNewUser) { %>
+            <p style="margin:0 0 20px;color:#475569;font-size:15px;line-height:1.6;">
+              You don't have a SplitPay account yet. Create one with this email, then accept the invite from your dashboard.
+            </p>
+            <a href="<%= registerUrl %>" style="display:inline-block;background:#0891b2;color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;">
+              Sign up on SplitPay
+            </a>
+            <% } else { %>
+            <p style="margin:0 0 20px;color:#475569;font-size:15px;line-height:1.6;">
+              Log in to SplitPay and accept the invitation from your dashboard.
+            </p>
+            <a href="<%= dashboardUrl %>" style="display:inline-block;background:#0891b2;color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;">
+              Open dashboard
+            </a>
+            <% } %>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:16px 32px 32px;">
+            <p style="margin:0;color:#94a3b8;font-size:12px;">Split bills. Settle instantly.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
