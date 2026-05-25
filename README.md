@@ -1,13 +1,13 @@
 # Express Prisma Auth Server
 
-Express Prisma Auth Server is the developer-friendly backend for Starter. It powers authentication and admin workflows through a modular Express + Prisma API.
+Express Prisma Auth Server is the developer-friendly backend for SplitPay. It powers authentication and user workflows through a modular Express + Prisma API.
 
 ## Features
 
 - Better Auth based auth system with email/password and Google login
 - JWT access and refresh token flow
 - Prisma-powered PostgreSQL data layer
-- Modular route structure for auth, users, and admins
+- Modular route structure for auth and SplitPay resources
 - Cloudinary-based media upload pipeline
 - OTP email verification and password reset flow
 - TypeScript-first codebase with validation and reusable utilities
@@ -60,8 +60,6 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-SUPER_ADMIN_EMAIL=your_super_admin_email
-SUPER_ADMIN_PASSWORD=your_super_admin_password
 ```
 
 ### 3. Start the development server
@@ -87,5 +85,5 @@ npm run start
 ## API Modules
 
 - `/api/v1/auth`
-- `/api/v1/users`
-- `/api/v1/admins`
+- `/api/v1/groups`
+- `/api/v1/settlements`

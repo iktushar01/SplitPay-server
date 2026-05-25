@@ -1,11 +1,8 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'SUPER_ADMIN');
+CREATE TYPE "Role" AS ENUM ('USER');
 
 -- CreateEnum
 CREATE TYPE "UserStatus" AS ENUM ('ACTIVE', 'INACTIVE', 'SUSPENDED', 'DELETED');
-
--- CreateEnum
-CREATE TYPE "GroupMemberRole" AS ENUM ('ADMIN', 'MEMBER');
 
 -- CreateEnum
 CREATE TYPE "SettlementStatus" AS ENUM ('PENDING', 'COMPLETED');
@@ -94,7 +91,6 @@ CREATE TABLE "group_members" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "groupId" TEXT NOT NULL,
-    "role" "GroupMemberRole" NOT NULL DEFAULT 'MEMBER',
     "joinedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "group_members_pkey" PRIMARY KEY ("id")

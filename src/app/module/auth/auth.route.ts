@@ -62,13 +62,13 @@ router.get("/oauth/error", AuthController.handleOAuthError);
 
 // ─── Authenticated routes (all roles) ────────────────────────────────────────
 
-const allRoles = [Role.USER, Role.ADMIN, Role.SUPER_ADMIN] as const;
+const userRoles = [Role.USER] as const;
 
-router.get("/me", checkAuth(...allRoles), AuthController.getMe);
+router.get("/me", checkAuth(...userRoles), AuthController.getMe);
 
 router.patch(
     "/me",
-    checkAuth(...allRoles),
+    checkAuth(...userRoles),
     memoryUpload.single("image"),
     validateRequest(updateProfileZodSchema),
     AuthController.updateProfile,
@@ -76,11 +76,11 @@ router.patch(
 
 router.post(
     "/change-password",
-    checkAuth(...allRoles),
+    checkAuth(...userRoles),
     validateRequest(changePasswordZodSchema),
     AuthController.changePassword,
 );
 
-router.post("/logout", checkAuth(...allRoles), AuthController.logoutUser);
+router.post("/logout", checkAuth(...userRoles), AuthController.logoutUser);
 
 export const AuthRoute = router;

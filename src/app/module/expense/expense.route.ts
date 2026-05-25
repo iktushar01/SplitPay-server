@@ -6,13 +6,13 @@ import { ExpenseController } from "./expense.controller";
 import { createExpenseZodSchema } from "./expense.validation";
 
 const router = Router({ mergeParams: true });
-const memberRoles = [Role.USER, Role.ADMIN, Role.SUPER_ADMIN] as const;
+const userRoles = [Role.USER] as const;
 
-router.get("/", checkAuth(...memberRoles), ExpenseController.listExpenses);
+router.get("/", checkAuth(...userRoles), ExpenseController.listExpenses);
 
 router.post(
   "/",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(createExpenseZodSchema),
   ExpenseController.createExpense,
 );

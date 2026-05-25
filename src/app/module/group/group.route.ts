@@ -12,34 +12,34 @@ import {
 } from "./group.validation";
 
 const router = Router();
-const memberRoles = [Role.USER, Role.ADMIN, Role.SUPER_ADMIN] as const;
+const userRoles = [Role.USER] as const;
 
 router.post(
   "/",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(createGroupZodSchema),
   GroupController.createGroup,
 );
 
-router.get("/", checkAuth(...memberRoles), GroupController.getMyGroups);
+router.get("/", checkAuth(...userRoles), GroupController.getMyGroups);
 
 router.get(
   "/:groupId",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(groupIdParamsSchema, "params"),
   GroupController.getGroupById,
 );
 
 router.get(
   "/:groupId/dashboard",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(groupIdParamsSchema, "params"),
   GroupController.getDashboard,
 );
 
 router.post(
   "/:groupId/members",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(groupIdParamsSchema, "params"),
   validateRequest(addGroupMemberZodSchema),
   GroupController.addMember,

@@ -2,9 +2,8 @@ import z from "zod";
 
 /**
  * Auth module owns the public registration schema.
- * The user module's createStudentZodSchema (which required gender, contactNumber, etc.)
- * is for admin-created students with full profiles. Public self-registration only
- * needs the minimum required fields — additional profile data can be filled later.
+ * Public self-registration only needs the minimum required fields; additional
+ * profile data can be filled later.
  */
 export const registerStudentZodSchema = z.object({
     name: z

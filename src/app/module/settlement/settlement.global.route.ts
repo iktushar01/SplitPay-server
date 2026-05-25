@@ -6,11 +6,11 @@ import { SettlementController } from "./settlement.controller";
 import { settlementIdParamsSchema } from "./settlement.validation";
 
 const router = Router();
-const memberRoles = [Role.USER, Role.ADMIN, Role.SUPER_ADMIN] as const;
+const userRoles = [Role.USER] as const;
 
 router.patch(
   "/:settlementId/complete",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(settlementIdParamsSchema, "params"),
   SettlementController.completeSettlement,
 );

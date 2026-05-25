@@ -6,13 +6,13 @@ import { SettlementController } from "./settlement.controller";
 import { createSettlementZodSchema } from "./settlement.validation";
 
 const router = Router({ mergeParams: true });
-const memberRoles = [Role.USER, Role.ADMIN, Role.SUPER_ADMIN] as const;
+const userRoles = [Role.USER] as const;
 
-router.get("/", checkAuth(...memberRoles), SettlementController.listSettlements);
+router.get("/", checkAuth(...userRoles), SettlementController.listSettlements);
 
 router.post(
   "/",
-  checkAuth(...memberRoles),
+  checkAuth(...userRoles),
   validateRequest(createSettlementZodSchema),
   SettlementController.createSettlement,
 );

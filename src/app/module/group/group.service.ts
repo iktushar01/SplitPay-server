@@ -1,5 +1,4 @@
 import { StatusCodes } from "http-status-codes";
-import { GroupMemberRole } from "../../lib/prisma-exports";
 import AppError from "../../errorHelpers/AppError";
 import { prisma } from "../../lib/prisma";
 import { BalanceService } from "../balance/balance.service";
@@ -24,7 +23,6 @@ const createGroup = async (creatorId: string, payload: ICreateGroupPayload) => {
       data: {
         groupId: group.id,
         userId: creatorId,
-        role: GroupMemberRole.ADMIN,
       },
     });
 
@@ -68,14 +66,7 @@ const addMember = async (
   requesterId: string,
   payload: IAddGroupMemberPayload,
 ) => {
-  const requesterMembership = await assertGroupMember(groupId, requesterId);
-
-  if (requesterMembership.role !== GroupMemberRole.ADMIN) {
-    throw new AppError(
-      StatusCodes.FORBIDDEN,
-      "Only group admins can add members",
-    );
-  }
+  await assertGroupMember(groupId, requesterId);
 
   const user = await prisma.user.findUnique({
     where: { id: payload.userId },
@@ -100,7 +91,6 @@ const addMember = async (
     data: {
       groupId,
       userId: payload.userId,
-      role: GroupMemberRole.MEMBER,
     },
     include: {
       user: { select: { id: true, name: true, email: true, image: true } },

@@ -11,10 +11,6 @@ export type Role = (typeof Role)[keyof typeof Role];
 export const UserStatus = prismaModule.UserStatus;
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus];
 
-export const GroupMemberRole = prismaModule.GroupMemberRole;
-export type GroupMemberRole =
-  (typeof GroupMemberRole)[keyof typeof GroupMemberRole];
-
 export const SettlementStatus = prismaModule.SettlementStatus;
 export type SettlementStatus =
   (typeof SettlementStatus)[keyof typeof SettlementStatus];

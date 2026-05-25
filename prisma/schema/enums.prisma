@@ -1,7 +1,5 @@
 enum Role {
   USER
-  ADMIN
-  SUPER_ADMIN
 }
 
 enum UserStatus {
@@ -9,11 +7,6 @@ enum UserStatus {
   INACTIVE
   SUSPENDED
   DELETED
-}
-
-enum GroupMemberRole {
-  ADMIN
-  MEMBER
 }
 
 enum SettlementStatus {

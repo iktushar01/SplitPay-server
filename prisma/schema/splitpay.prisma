@@ -16,11 +16,10 @@ model Group {
 }
 
 model GroupMember {
-  id       String          @id @default(uuid())
+  id       String   @id @default(uuid())
   userId   String
   groupId  String
-  role     GroupMemberRole @default(MEMBER)
-  joinedAt DateTime        @default(now())
+  joinedAt DateTime @default(now())
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
